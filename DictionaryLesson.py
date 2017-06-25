@@ -39,5 +39,6 @@ dict_dict = {
     "en":english_dict,
     "ge":german_dict
 }
-
+print(dict_dict)
 pprint(dict_dict)
+
