@@ -25,10 +25,10 @@ plt.figure(0)
 
 
 #plots just the x and y variables onto the graph, and connects them with a blue line by default.
-plt.plot(x, y)
+plt.plot(x, y, label="Normal Graph Line")
 
 #This will plot x and y again, but with no line in between them, this time the points themselves will show up as red dots.
-plt.plot(x, y, 'ro')
+plt.plot(x, y, 'ro', label="Normal Graph Red Dots")
 
 
 #This complicated piece of code is the most elegant way i could think og to auto generate a  line of best fit.
@@ -41,7 +41,7 @@ plt.plot(x, y, 'ro')
 #     | x to desired   |                             |                   |
 #     |  format        |                             |                   |
 #           VV                   VV                       VV
-plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)))
+plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), label="Line of best Fit")
 
 # That last function is defaulted to drawing a line again, and the color numpy uses for a second line is orange,
 # If line colors matter you can specify it, or matplotlib will automatically generate new uniqu colors for your lines.
@@ -53,6 +53,10 @@ plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)))
 plt.xlabel('X - Values')
 plt.ylabel('Y - Value')
 plt.title('This is the title of the first graph/figure. ')
+
+#This displays the legend which displays the different labels for the lines,
+# loc=best means location = best locaiton = non-busy area of the graph
+plt.legend(loc='best')
 plt.show()
 
 #There are many much more advanced functionalities of this matplotlib,
@@ -95,3 +99,68 @@ plt.plot(t2, np.cos(2*np.pi*t2), 'r--')
 
 plt.show()
 
+
+
+
+# Histogram example!
+
+plt.figure(3)
+
+np.random.seed(19680801)
+
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(x, 50, normed=1, facecolor='g', alpha=0.75)
+
+
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.title('Histogram of IQ')
+plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+plt.show()
+
+
+
+# Bar graph example!!!
+plt.figure(4)
+objects = ('Python', 'C++', 'Java', 'Perl', 'Scala', 'Lisp')
+y_pos = np.arange(len(objects))
+performance = [10, 8, 6, 4, 2, 1]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.ylabel('Usage')
+plt.title('Programming language usage')
+
+plt.show()
+
+
+# Example with lines and bar graphs  (removed histograms as they dont make sense to throw on top of each other. )
+plt.figure(4)
+
+
+
+x = np.arange(-4, 5, 1)
+
+print(x)
+
+y = np.array([8,4,2,1,0,1,2,4,8])
+print(y)
+plt.plot(x, y, label="Normal Graph")
+plt.plot(x, y, 'ro', label="Normal Graph Red Dots")
+
+plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), label="Line of best Fit")
+
+plt.bar(x, y)
+
+plt.xlabel('X - Values')
+plt.ylabel('Y - Value')
+plt.title('This is the title of the first graph/figure. ')
+
+#This displays the legend which displays the different labels for the lines,
+# loc=best means location = best locaiton = non-busy area of the graph
+plt.legend(loc='best')
+plt.show()
