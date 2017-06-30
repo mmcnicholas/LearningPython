@@ -50,6 +50,7 @@ print(new_list)
 
 import numpy as np
 
+
 arr2 = np.array(["Harry", "Hermione","Ron"])
 arr3 = np.array(["Potter", "Granger", "Weasley"])
 
